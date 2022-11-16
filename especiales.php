@@ -17,12 +17,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>COTIZACIONES</h1>
+            <h1>ACTIVIDADES ESPECIALES</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
+              <button type="button" class="btn btn-info btn-block btn-flat"  data-toggle="modal" data-target="#modal-info">&nbsp;Agregar actividad <i class="fa-solid fa-circle-plus" ></i></button>
             </ol>
           </div>
         </div>
@@ -30,14 +29,14 @@
     </section>
 
     <!-- Main content -->
-    <section class="content" style="font-size: 12px;">
+    <section class="content" style="font-size: 13px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tabla de cotizaciones</h3>
+                <h3 class="card-title">Tabla de actividades</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -45,32 +44,46 @@
                   <thead>
                   <tr>
                     <th>OT</th>
-                    <th>Fecha</th>
                     <th>Cliente</th>
+                    <th>Actividad</th>
+                    <th>IDC 1</th>
+                    <th>IDC 2</th>
                     <th>Numero de cotizacion</th>
+                    <th>Estatus de la actividad</th>
                     <th>Observaciones</th>
+                    <th> </th>
                   </tr>
                   </thead>
                   <tbody>
                   
                     <?php 
-                      $sql = "SELECT * FROM `cotizaciones` " ;
+                      $sql = "SELECT * FROM `actividades` " ;
                       $consulta = mysqli_query($conexion, $sql);
+                      
+                    
 
                       while($row = mysqli_fetch_array($consulta)){
                       $ot = $row['ot'];
-                      $fecha = $row['fecha'];
-                      $correo = $row['cliente'];
+                      $cliente = $row['cliente'];
+                      $tipo = $row['tipo_actividad'];
+                      $idc1 = $row['idc_1'];
+                      $idc2 = $row['idc_2'];
                       $num_cotizacion = $row['num_cotizacion'];
-                      $observacion = $row['observacion'];
+                      $estatus = $row['estatus_actividad'];
+                      $observacion = $row['obsevacion'];
+                      
                       
                     ?>
                     <tr>
                       <td><?php echo $ot; ?></td>
-                      <td><?php echo $fecha; ?></td>
-                      <td><?php echo $correo; ?></td>
+                      <td><?php echo $cliente; ?></td>
+                      <td><?php echo $tipo;; ?></td>
+                      <td><?php echo $idc1; ?></td>
+                      <td><?php echo $idc2; ?></td>
                       <td><?php echo $num_cotizacion; ?></td>                    
-                      <td><?php echo $observacion; ?></td>                    
+                      <td><?php echo $estatus; ?></td>                    
+                      <td><?php echo $observacion; ?></td>
+                      <td><a class="btn btn-danger btn-circle" onclick="eliminar('<?php echo $nombre?>');" ><i class='fas fa-trash-alt'></i></a></td>                    
 
                     </tr>
                     <?php 
@@ -95,33 +108,35 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- Page specific script -->
+<div class="modal fade" id="modal-info">
+  <div class="modal-dialog">
+    <div class="modal-content bg-info">
+      <div class="modal-header">
+        <h4 class="modal-title">Info Modal</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-light">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<?php include 'footer.php'; ?>
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": [ "excel", "pdf"]
+      "buttons": ["excel", "pdf"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,

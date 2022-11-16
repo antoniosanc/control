@@ -1,10 +1,14 @@
-<?php include 'bd/conexion.php' ?>
+<?php include 'database/conexion.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title><?php if (!isset($_GET['n'])) {
+       echo "Servicios en TIC S.A. de C.V.";
+    }else{
+      $n=$_GET['n']; echo $n;
+    } ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -28,11 +32,17 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+  <!-- ico -->
+  <link rel="shortcut icon" type="image/x-icon" href="img/fav.ico">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
-  <!-- Preloader -->
+  
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="img/STIC (4).gif" alt="AdminLTELogo" height="100" width="100">
   </div>
@@ -116,7 +126,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-          <li class="nav-header">CONTOL DE ACTIVIDADES</li>
+          <li class="nav-header">CONTOL DE ACTIVIDADES ATC</li>
           <li class="nav-item">
             <a href="cotizaciones.php" class="nav-link">
               <i class="fa-solid fa-calculator"></i>
@@ -135,7 +145,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="facturación.php" class="nav-link">
+            <a href="facturacion.php" class="nav-link">
               <i class="fa-solid fa-file-invoice-dollar"></i>
               <p>
                 FACTURACIÓN ATC
@@ -151,7 +161,23 @@
             </a>
           </li>
 
-          <li class="nav-header">REPORTE GENERAL</li>
+          <li class="nav-header">CONTROL DE ACTIVIDADES ESP.</li>
+          <li class="nav-item">
+            <a href="especiales.php" class="nav-link">
+              <i class="fa-sharp fa-solid fa-chart-line"></i>
+              <p>
+                ACTIVIDADES ESP.
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="cotizaciones.php" class="nav-link">
+              <i class="fa-solid fa-money-check-dollar"></i>
+              <p>
+                COTIZACIONES ESP.
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

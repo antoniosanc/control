@@ -11,7 +11,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">CONTOL DE ACTIVIDADES</h1>
-            <p><h6 class="m-0"><b>Bienvenido:</b> Fernando de la Trinidad</h6></p>
+            <p><h6 class="m-0" ><b>Bienvenido:</b> Fernando de la Trinidad</h6></p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -34,7 +34,7 @@
               <div class="icon">
                 <i class="fa-solid fa-calculator"></i>
               </div>
-              <a href="cotizaciones.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="cotizaciones.php" class="small-box-footer">Mostar más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -49,7 +49,7 @@
               <div class="icon">
                 <i class="fa-solid fa-business-time"></i>
               </div>
-              <a href="actividades.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="actividades.php" class="small-box-footer">Mostar más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -64,7 +64,7 @@
               <div class="icon">
                 <i class="fa-solid fa-file-invoice-dollar"></i>
               </div>
-              <a href="facturacion.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="facturacion.php" class="small-box-footer">Mostar más  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -79,7 +79,7 @@
               <div class="icon">
                 <i class="fa-solid fa-user"></i>
               </div>
-              <a href="empleados.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="empleados.php?n=Empleados STIC" class="small-box-footer">Mostar más  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -113,9 +113,9 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>N°</th>
-                      <th>Correo</th>
-                      <th>Puesto</th>
+                      <!-- <th>N°</th> -->
+                      <th>Nombre</th>
+                      <th>RFC</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -127,13 +127,14 @@
                       $nombre = $row['nombre'];
                       $correo = $row['correo'];
                       $puesto = $row['puesto'];
+                      $rfc = $row['rfc'];
                       $telefono = $row['telefono'];
                       
                     ?>
                     <tr>
-                      <td><?php echo $id; ?></td>
-                      <td><?php echo $correo; ?></td>
-                      <td><?php echo $puesto; ?></td>                    
+                      <!-- <td><//?php //echo $id; ?></td> -->
+                      <td><?php echo $nombre; ?></td>
+                      <td><?php echo $rfc; ?></td>                    
                     </tr>
                     <?php 
                       } 
